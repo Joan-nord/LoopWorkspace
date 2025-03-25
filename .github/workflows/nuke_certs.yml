@@ -1,0 +1,18 @@
+name: Nuke Certs
+on:
+  workflow_dispatch:
+
+jobs:
+  nuke_certs_job:
+    runs-on: macos-14
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          bundle install
+
+      - name: Nuke Certs
+        run: |
+          bundle exec fastlane nuke_certs
