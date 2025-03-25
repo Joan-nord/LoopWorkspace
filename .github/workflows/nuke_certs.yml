@@ -9,10 +9,13 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Update Bundler and Fastlane
         run: |
           bundle install
+          bundle update fastlane
 
       - name: Nuke Certs
-        run: |
-          bundle exec fastlane nuke_certs
+        run: bundle exec fastlane nuke_certs
